@@ -41,7 +41,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        # os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [macos-latest]
     steps:
     - uses: actions/setup-python@v1
       with:
@@ -108,6 +109,7 @@ jobs:
   build-clang:
     name: clang (LTO)
     runs-on: ubuntu-latest
+    if: false
     steps:
     - uses: actions/setup-python@v1
       with:
@@ -132,6 +134,7 @@ jobs:
   build-asan:
     name: asan
     runs-on: ubuntu-latest
+    if: false
     env:
       ASAN_OPTIONS: "symbolize=1"
       COMPILER_FLAGS: "-fsanitize=address"
@@ -159,6 +162,7 @@ jobs:
   build-alpine:
     name: alpine
     runs-on: ubuntu-latest
+    if: false
     steps:
     - uses: actions/setup-python@v1
       with:
@@ -193,6 +197,7 @@ jobs:
   build-ubsan:
     name: ubsan
     runs-on: ubuntu-latest
+    if: false
     env:
       COMPILER_FLAGS: "-fsanitize=undefined -fno-sanitize-recover=all"
       CC: "clang"
@@ -219,6 +224,7 @@ jobs:
   build-tsan:
     name: tsan
     runs-on: ubuntu-latest
+    if: false
     env:
       COMPILER_FLAGS: "-fsanitize=thread"
       LINKER_FLAGS: "-fsanitize=thread"
@@ -244,6 +250,7 @@ jobs:
   build-emscripten:
     name: emscripten
     runs-on: ubuntu-latest
+    if: false
     steps:
     - uses: actions/setup-python@v1
       with:
@@ -269,6 +276,7 @@ jobs:
   build-mingw:
     name: mingw
     runs-on: windows-latest
+    if: false
     steps:
     - uses: actions/setup-python@v1
       with:
